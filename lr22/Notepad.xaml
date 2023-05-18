@@ -1,0 +1,57 @@
+﻿<Page x:Class="lr22.Notepad"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lang="clr-namespace:MyProject.Language"
+        xmlns:local="clr-namespace:lr22"
+        mc:Ignorable="d" >
+    <Page.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed" />
+        <CommandBinding Command="ApplicationCommands.Save" Executed="Save_Executed" />
+    </Page.CommandBindings>
+    <DockPanel>
+        <ToolBar DockPanel.Dock="Top">
+            <Button Command="ApplicationCommands.Open" ToolTip="{x:Static lang:Resources.open}">
+                <Image Source="/Images/open-folder.png" Width="16" Height="16" />
+            </Button>
+            <Button Command="ApplicationCommands.Save" ToolTip="{x:Static lang:Resources.save}">
+                <Image Source="/Images/save.png" Width="16" Height="16" />
+            </Button>
+            <Separator />
+            <Button Click="Button_Click" ToolTip="{x:Static lang:Resources.add_image}">
+                <Image Source="/Images/photo.png" Width="16" Height="16" />
+            </Button> 
+            <Separator />
+            <ComboBox Name="cmbFontFamily" Width="150" SelectionChanged="cmbFontFamily_SelectionChanged" ToolTip="{x:Static lang:Resources.select_font}" />
+            <ComboBox Name="cmbFontSize" Width="50" IsEditable="True" TextBoxBase.TextChanged="cmbFontSize_TextChanged" ToolTip="{x:Static lang:Resources.select_font_size}" />
+            <Separator />
+            <ToggleButton Command="EditingCommands.ToggleBold" Name="btnBold" ToolTip="{x:Static lang:Resources.bold}">
+                <Image Source="/Images/bold.png" Width="16" Height="12" />
+            </ToggleButton>
+            <ToggleButton Command="EditingCommands.ToggleItalic" Name="btnItalic" ToolTip="{x:Static lang:Resources.italic}">
+                <Image Source="/Images/italic-font.png" Width="16" Height="13" />
+            </ToggleButton>
+            <ToggleButton Command="EditingCommands.ToggleUnderline" Name="btnUnderline" ToolTip="{x:Static lang:Resources.underline}">
+                <Image Source="/Images/underlined-text.png" Width="16" Height="13" />
+            </ToggleButton>
+            <Separator />
+            <Button x:Name="left" Click="left_Click" ToolTip="{x:Static lang:Resources.left_align}">
+                <Image Source="/Images/left-align.png" Width="16" Height="14" />
+            </Button>
+            <Button x:Name="center" Click="center_Click" ToolTip="{x:Static lang:Resources.center_align}">
+                <Image Source="/Images/center-align.png" Width="16" Height="14" />
+            </Button>
+            <Button x:Name="right" Click="right_Click" ToolTip="{x:Static lang:Resources.right_align}">
+                <Image Source="/Images/right-align.png" Width="16" Height="14" />
+            </Button>
+            <Separator />
+            <ComboBox Name="changeLanguane" Width="40" ToolTip="{x:Static lang:Resources.select_language}" SelectionChanged="changeLanguane_SelectionChanged">
+                <ComboBoxItem x:Name="settings_lang_en" Content="EN"/>
+                <ComboBoxItem x:Name="settings_lang_uk" Content="UK"/>
+            </ComboBox>
+            <Separator />
+        </ToolBar>
+        <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged" />
+    </DockPanel>
+</Page>
